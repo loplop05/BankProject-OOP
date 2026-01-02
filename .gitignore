@@ -1,0 +1,22 @@
+# Visual Studio / C++ build junk
+.vs/
+ipch/
+*.ipch
+*.obj
+*.pch
+*.pdb
+*.idb
+*.ilk
+*.tlog
+*.log
+*.suo
+*.user
+*.VC.db
+*.VC.opendb
+x64/
+Debug/
+Release/
+*.exe
+*.dll
+*.lib
+*.exp
