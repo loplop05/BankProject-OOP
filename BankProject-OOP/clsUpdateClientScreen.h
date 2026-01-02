@@ -6,6 +6,7 @@
 #include "clsInputValidate.h"
 
 class clsUpdateClientScreen :protected clsScreen
+
 {
 private:
 

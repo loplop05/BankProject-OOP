@@ -12,7 +12,7 @@
 class clsShowClientsScreen : protected clsScreen
 {
 private :
-    void _PrintClientRecordLine(clsBankClient Client)
+    static void _PrintClientRecordLine(clsBankClient Client)
     {
 
         cout << "| " << setw(15) << left << Client.AccountNumber();
@@ -28,7 +28,7 @@ private :
 
 
 public:
-    void ShowClientsList()
+ static  void ShowClientsList()
     {
 
         vector <clsBankClient> vClients = clsBankClient::GetClientsList();

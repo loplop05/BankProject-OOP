@@ -7,7 +7,12 @@
 #include "clsPerson.h"
 #include "clsBankClient.h"
 #include "clsUtil.h"
-#include "clsMainScreen.h"
+#include "clsShowClientsScreen.h"
+
+#include "clsAddNewClientScreen.h"
+#include "clsDeleteClient.h"
+#include "clsUpdateClientScreen.h"
+#include "clsFindClientScreen.h"
 
 
 using namespace std;
@@ -42,30 +47,32 @@ private:
     {
         cout << "\nClient List Screen Will be here...\n";
 
-
+		clsShowClientsScreen::ShowClientsList();
     }
 
     static void _ShowAddNewClientsScreen()
     {
         cout << "\nAdd New Client Screen Will be here...\n";
-
+		clsAddNewClientScreen::AddNewClient();
     }
 
     static void _ShowDeleteClientScreen()
     {
-        cout << "\nDelete Client Screen Will be here...\n";
-
+        cout << "\nDelete Client Screen Will be here...\n\n";
+		clsDeleteClient::DeleteClient();
     }
 
     static void _ShowUpdateClientScreen()
     {
         cout << "\nUpdate Client Screen Will be here...\n";
+		clsUpdateClientScreen::ShowUpdateClientScreen();
 
     }
 
     static void _ShowFindClientScreen()
     {
         cout << "\nFind Client Screen Will be here...\n";
+		clsFindClientScreen::ShowFindClientScreen();
 
     }
 
