@@ -63,7 +63,7 @@ public:
 
         if (Answer == 'Y' || Answer == 'y')
         {
-            Client1.withdraw(Amount);
+            Client1.Withdraw(Amount);
             cout << "\nAmount WithDrawed Successfully.\n";
             cout << "\nNew Balance Is: " << Client1.AccountBalance;
 

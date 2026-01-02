@@ -21,7 +21,7 @@ protected:
         cout << "\n\t\t\t\t\tUser: " << CurrentUser.UserName << "\n";
         cout << "\t\t\t\t\tDate: " << clsDate::DateToString(clsDate())
             << "\n";
-
+    
 
     }
 
