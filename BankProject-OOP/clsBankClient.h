@@ -386,5 +386,19 @@ public:
     }
 
 
+    void Deposit(float Amount)
+    {
+        _AccountBalance += Amount;
+        Save();
+    }
+    void withdraw(float Amount)
+    {
+        _AccountBalance -= Amount;
+        Save();
+	}
+
+
+
+
 };
 

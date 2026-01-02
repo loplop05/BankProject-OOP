@@ -132,9 +132,13 @@
   <ItemGroup>
     <ClInclude Include="clsAddNewClientScreen.h" />
     <ClInclude Include="clsBankClient.h" />
+    <ClInclude Include="clsDeleteClient.h" />
+    <ClInclude Include="clsFindClientScreen.h" />
     <ClInclude Include="clsMainScreen.h" />
     <ClInclude Include="clsScreen.h" />
     <ClInclude Include="clsShowClientsScreen.h" />
+    <ClInclude Include="clsTransationMenu.h" />
+    <ClInclude Include="clsUpdateClientScreen.h" />
     <ClInclude Include="clsUtil.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
