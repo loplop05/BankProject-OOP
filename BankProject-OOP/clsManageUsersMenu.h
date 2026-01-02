@@ -2,11 +2,12 @@
 #include <iostream>
 #include "clsScreen.h"
 #include "clsInputValidate.h"
+#include <iomanip>
 #include "clsListUsersScreen.h"
 #include "clsAddNewUserScreen.h"
-#include "clsDeleteClient.h"
-#include "clsUpdateClientScreen.h"
-#include <iomanip>
+#include "clsDeleteUserScreen.h"
+#include "clsUpdateUserScreen.h"
+#include "clsFindUserScreen.h"
 
 using namespace std;
 
@@ -35,32 +36,36 @@ private:
 
     static void _ShowListUsersScreen()
     {
-		clsListUsersScreen::ShowUsersList();
+        //cout << "\nList Users Screen Will Be Here.\n";
+        clsClientListScreen::ShowClientsList();
 
     }
 
     static void _ShowAddNewUserScreen()
     {
-		clsAddNewClientScreen::AddNewClient();
+        // cout << "\nAdd New User Screen Will Be Here.\n";
+        clsAddNewUserScreen::ShowAddNewUserScreen();
 
     }
 
     static void _ShowDeleteUserScreen()
     {
-        clsDeleteClient::DeleteClient();
+        // cout << "\nDelete User Screen Will Be Here.\n";
+        clsDeleteUserScreen::ShowDeleteUserScreen();
 
     }
 
     static void _ShowUpdateUserScreen()
     {
-		clsUpdateClientScreen::ShowUpdateClientScreen();
+        // cout << "\nUpdate User Screen Will Be Here.\n";
+        clsUpdateUserScreen::ShowUpdateUserScreen();
     }
 
     static void _ShowFindUserScreen()
     {
-        cout << "\nFind User Screen Will Be Here.\n";
+        //cout << "\nFind User Screen Will Be Here.\n";
+        clsFindUserScreen::ShowFindUserScreen();
     }
-
 
     static void _PerformManageUsersMenueOption(enManageUsersMenueOptions ManageUsersMenueOption)
     {
@@ -116,13 +121,15 @@ private:
 
     }
 
-
-
 public:
-
 
     static void ShowManageUsersMenue()
     {
+
+        if (!CheckAccessRights(clsUser::enPermissions::pManageUsers))
+        {
+            return;// this will exit the function and it will not continue
+        }
 
         system("cls");
         _DrawScreenHeader("\t Manage Users Screen");

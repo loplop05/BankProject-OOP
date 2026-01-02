@@ -1,19 +1,40 @@
 #pragma once
 #include <iostream>
 #include "clsScreen.h"
-#include "clsInputValidate.h"
-#include <iomanip>
 #include "clsPerson.h"
 #include "clsBankClient.h"
-#include "clsUtil.h"
-#include "clsShowClientsScreen.h"
-using namespace std;
-class clsDeleteClient : protected clsScreen
+#include "clsInputValidate.h"
+
+class clsDeleteClientScreen :protected clsScreen
 {
 
-public :
-   static void DeleteClient()
+private:
+    static void _PrintClient(clsBankClient Client)
     {
+        cout << "\nClient Card:";
+        cout << "\n___________________";
+        cout << "\nFirstName   : " << Client.FirstName;
+        cout << "\nLastName    : " << Client.LastName;
+        cout << "\nFull Name   : " << Client.FullName();
+        cout << "\nEmail       : " << Client.Email;
+        cout << "\nPhone       : " << Client.Phone;
+        cout << "\nAcc. Number : " << Client.AccountNumber();
+        cout << "\nPassword    : " << Client.PinCode;
+        cout << "\nBalance     : " << Client.AccountBalance;
+        cout << "\n___________________\n";
+
+    }
+
+public:
+    static void ShowDeleteClientScreen()
+    {
+        if (!CheckAccessRights(clsUser::enPermissions::pDeleteClient))
+        {
+            return;// this will exit the function and it will not continue
+        }
+
+        _DrawScreenHeader("\tDelete Client Screen");
+
         string AccountNumber = "";
 
         cout << "\nPlease Enter Account Number: ";
@@ -25,7 +46,7 @@ public :
         }
 
         clsBankClient Client1 = clsBankClient::Find(AccountNumber);
-        Client1.Print();
+        _PrintClient(Client1);
 
         cout << "\nAre you sure you want to delete this client y/n? ";
 
@@ -39,8 +60,7 @@ public :
             if (Client1.Delete())
             {
                 cout << "\nClient Deleted Successfully :-)\n";
-
-                Client1.Print();
+                _PrintClient(Client1);
             }
             else
             {
@@ -49,8 +69,5 @@ public :
         }
     }
 
-
-
-
-
 };
+

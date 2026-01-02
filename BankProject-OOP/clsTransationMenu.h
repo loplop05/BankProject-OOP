@@ -2,10 +2,10 @@
 #include <iostream>
 #include "clsScreen.h"
 #include "clsInputValidate.h"
-#include "clsShowWithdrawScreen.h"
-#include "clsDepositScreen.h"
-#include "clsTotalBalances.h"
 #include <iomanip>
+#include "clsDepositScreen.h"
+#include "clsShowWithdrawScreen.h"
+#include "clsTotalBalances.h"
 
 using namespace std;
 
@@ -19,29 +19,31 @@ private:
         eShowTotalBalance = 3, eShowMainMenue = 4
     };
 
-    static int ReadTransactionsMenueOption()
+    static short ReadTransactionsMenueOption()
     {
         cout << setw(37) << left << "" << "Choose what do you want to do? [1 to 4]? ";
-        int Choice = clsInputValidate::ReadIntNumberBetween(1, 4, "Enter Number between 1 to 4? ");
+        short Choice = clsInputValidate::ReadIntNumberBetween(1, 4, "Enter Number between 1 to 4? ");
         return Choice;
     }
 
 
     static void _ShowDepositScreen()
     {
-		clsDepositScreen::ShowDepositScreen();
+        //cout << "\n Deposit Screen will be here.\n";
+        clsDepositScreen::ShowDepositScreen();
     }
 
     static void _ShowWithdrawScreen()
     {
-		clsWithdrawScreen::ShowWithdrawScreen();
+        //cout << "\n Withdraw Screen will be here.\n";
+        clsWithdrawScreen::ShowWithdrawScreen();
     }
-
-
 
     static void _ShowTotalBalancesScreen()
     {
-		clsTotalBalancesScreen::ShowTotalBalances();
+        // cout << "\n Balances Screen will be here.\n";
+        clsTotalBalancesScreen::ShowTotalBalances();
+
     }
 
     static void _GoBackToTransactionsMenue()
@@ -72,6 +74,7 @@ private:
             break;
         }
 
+
         case enTransactionsMenueOptions::eShowTotalBalance:
         {
             system("cls");
@@ -80,10 +83,11 @@ private:
             break;
         }
 
-
         case enTransactionsMenueOptions::eShowMainMenue:
         {
+
             //do nothing here the main screen will handle it :-) ;
+
         }
         }
 
@@ -98,9 +102,13 @@ public:
     static void ShowTransactionsMenue()
     {
 
+        if (!CheckAccessRights(clsUser::enPermissions::pTranactions))
+        {
+            return;// this will exit the function and it will not continue
+        }
 
         system("cls");
-        _DrawScreenHeader("\t  Transactions Screen");
+        _DrawScreenHeader("\tTransactions Screen");
 
         cout << setw(37) << left << "" << "===========================================\n";
         cout << setw(37) << left << "" << "\t\t  Transactions Menue\n";
