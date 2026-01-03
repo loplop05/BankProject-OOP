@@ -1,9 +1,10 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "InterfaceCommunication.h"
 using namespace std;
 
-class clsPerson
+class clsPerson : public InterfaceCommunication
 {
 
 private:
@@ -80,6 +81,33 @@ public:
     string FullName()
     {
         return _FirstName + " " + _LastName;
+    }
+
+    // Implement pure virtuals from InterfaceCommunication
+    void SendEmaail(string title, string body) override
+    {
+        SendEmail(title, body);
+    }
+    void SendSMS(string title, string body) override
+    {
+        SendSms(title, body);
+    }
+    void SendFax(string title, string body) override
+    {
+        SendFax(title, body);
+    }
+
+    void SendEmail(string title, string body) 
+    {
+        cout << "\nSending Email to " << _Email;
+        cout << "\nTitle: " << title;
+        cout << "\nBody : " << body << endl;
+    }
+    void SendSms(string title, string body)
+    {
+        cout << "\nSending Email to " << _Email;
+        cout << "\nTitle: " << title;
+        cout << "\nBody : " << body << endl;
     }
 
     void Print()
